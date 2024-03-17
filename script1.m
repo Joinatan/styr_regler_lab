@@ -44,7 +44,8 @@ D = d_0 + d_1 * Z^(-1) + d_2 * Z^(-2);
 tutti = A * C + B * D;
 eqn =  1 == (A * C + B * D)/P;
 
-%system eqn
+%rakna ut koefficienter i polynom C och D
+
 %z1 = -1 + c_1 - (1751/1000) + d_0 * (19/2500) == -0.4;
 %z2 = -c_1 + (1751/1000) - c_1 * (1751/1000) + (769/1000) + d_1 * (19/2500) + d_0 *(349/50000) == 0.04;
 z1 = -1 + c_1 - (1751/1000) + d_0 * (19/2500) == -1.2;
@@ -64,12 +65,14 @@ k_r = 0.16 / 0.01458;
 Bz = 0.00698 * z^(-2) + 0.0076 * z^(-1);
 Az = 0.7659 * z^(-2) - 1.751 * z^(-1) + 1;
 
+%totala overforingsfunktionen med polplaceringsregulator
 Gz_tot = k_r * (Bz / (Az * Cz + Bz * Dz));
+%styrsignalen
 Uz = (k_r * Az)/(Az * Cz + Bz * Dz);
 
-%poler i 0.6
 
-%symblisk variant
+
+%symbliska varianter (strunta i dessa)
 BZ = 0.00698 * Z^(-2) + 0.0076 * Z^(-1);
 AZ = 0.7659 * Z^(-2) - 1.751 * Z^(-1) + 1;
 CZ = (1 + c1 * Z^(-1)) * (1 - Z^(-1));
